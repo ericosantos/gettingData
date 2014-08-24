@@ -1,0 +1,26 @@
+---
+title: "README"
+author: "Erico Santos"
+date: "Sunday, August 24, 2014"
+output: html_document
+---
+
+This document describes how the code in \code{run_Analysis.R} works.
+
+The code starts by downloading a zip file and unzipping it which creates a folder with data called "UCI HAR Dataset/". This folder contains the following files:
+
+- 'features_info.txt': Shows information about the variables used on the feature vector.
+- 'features.txt': List of all features.
+- 'activity_labels.txt': Links the class labels with their activity name.
+- 'train/X_train.txt': Training set.
+- 'train/y_train.txt': Training labels.
+- 'train/subject_train.txt': list of subjects.
+- 'test/X_test.txt': Test set.
+- 'test/y_test.txt': Test labels.
+- 'test/subject_train.txt': list of subjects.
+
+The code reads all files from the train and test folders separately and merges them together in the variables dTrain and dTest. It then combines both datasets by row-binding them into the variable "data".
+
+The data is then "molten" into a data.table called moltendata where the mean and standard deviations are calculated. The molten data is then aggregated into a data.frame called tidydata, with one row for each subject, activity and variable.
+
+The tidy data is written to a file.
